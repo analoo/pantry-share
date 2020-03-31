@@ -29,3 +29,14 @@ h1 {
     padding: 20px;
 
 }
+
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    height: 2.5rem;
+    width: 100%;
+    text-align: center;
+    background-color: #3D550C;
+    color: white;
+    padding: 15px;
+}
