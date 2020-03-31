@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
 </head>
+
 <body>
     <div>
         <h1 class="uk-heading-large"><img src="assets/Screen Shot 2020-03-31 at 10.32.16 AM.png"></h1>
@@ -25,11 +27,20 @@
     </nav>
     <hr>
     <aside>
-        <div>
-            Find Food Here
+        <div id="search-options">
+            Filter results by Zipcode:
+            <form>
+                <div id="food-filters">
+                    <input type="text" id="zipcode" placeholder="" />
+                    <input type="submit" id="search-button"/>
+                </div>
+            </form>
+        <div id="food-options">
+        Find Food Here
         </div>
     </aside>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
