@@ -5,23 +5,23 @@
 
 // ======================================
 
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyAXwZwmrZkcGxq5-pXZTPg--bw6bRGB2G0",
-    authDomain: "food-share-ad623.firebaseapp.com",
-    databaseURL: "https://food-share-ad623.firebaseio.com",
-    projectId: "food-share-ad623",
-    storageBucket: "food-share-ad623.appspot.com",
-    messagingSenderId: "999281031297",
-    appId: "1:999281031297:web:f9d265166ebfc345763580",
-    measurementId: "G-3EYCVELK5L"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  // // Your web app's Firebase configuration
+  // var firebaseConfig = {
+  //   apiKey: "AIzaSyAXwZwmrZkcGxq5-pXZTPg--bw6bRGB2G0",
+  //   authDomain: "food-share-ad623.firebaseapp.com",
+  //   databaseURL: "https://food-share-ad623.firebaseio.com",
+  //   projectId: "food-share-ad623",
+  //   storageBucket: "food-share-ad623.appspot.com",
+  //   messagingSenderId: "999281031297",
+  //   appId: "1:999281031297:web:f9d265166ebfc345763580",
+  //   measurementId: "G-3EYCVELK5L"
+  // };
+  // // Initialize Firebase
+  // firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
 
-  var data = firebase.database();
-  console.log(data);
+  // var data = firebase.database();
+  // console.log(data);
 
 
 
