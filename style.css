@@ -6,3 +6,21 @@ h1 {
 #uk-navbar {
     background-color: rgb(173, 201, 165);
 }
+
+#picture{
+    float: left;
+    width: 45%;
+    height: auto;
+    padding: 10px;
+}
+
+#info {
+    float: right;
+    width: 45%;
+    padding: 10px;
+}
+
+#our-mission {
+    padding: 20px;
+
+}
