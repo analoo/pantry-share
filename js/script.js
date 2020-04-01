@@ -23,6 +23,7 @@ function displayFoodPantries(){
         $(div).append("<p>"+foodpantries[i].name+"</p>")
         $(div).append("<p>"+foodpantries[i].address+"</p>")
         $(div).append("<p>"+foodpantries[i].hours+"</p>")
+        $(div).append("<hr>")
     }  
     for (let i = 0; i < userSubmissions.length ; i++){
       var div = $("<div class='user'>User Submissions: </div>")

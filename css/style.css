@@ -18,6 +18,22 @@ h1 {
     background-color: rgb(173, 201, 165);
 }
 
+#food-search {
+    margin: auto;
+    width: 50%;
+}
+
+#floating-panel {
+    float: right;
+    width: 70%;
+    height: 200px;
+}
+#food-options {
+    float: left;
+    width: 25%;
+    padding: 20px;
+}
+
 #picture{
     float: left;
     width: 45%;
@@ -35,6 +51,9 @@ h1 {
     padding: 20px;
 
 }
+.user {
+    padding-bottom: 20px;
+}
 
 .page-footer {
     position: fixed;
@@ -44,5 +63,5 @@ h1 {
     text-align: center;
     background-color: #3D550C;
     color: white;
-    padding: 15px;
+    padding: 10px;
 }
