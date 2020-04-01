@@ -13,11 +13,13 @@
 
 <body>
     <div>
+
         <h1 class="uk-heading-large"><img src="assets/Screen Shot 2020-03-31 at 10.32.16 AM.png"></h1>
     </div>
     <nav class="uk-navbar-container" id="uk-navbar">
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
+
                 <li class="uk-active" id="home"><a href="index.html">Home</a></li>
                 <li class="uk-active" id="find-food"><a href="findfood.html">Find Food</a></li>
                 <li class="uk-active" id="give-food"><a href="givefood.html">Give Food</a></li>
@@ -26,26 +28,14 @@
         </div>
     </nav>
     <hr>
-    <aside>
-        <div id="search-options">
-            Filter results by Zipcode:
-            <form id="food-search">
-                <div id="food-filters">
-                    <input type="text" id="zipcode" placeholder="" />
-                    <input type="submit" id="search-button" />
-                </div>
-            </form>
-            <div id="food-options">
-                Find Food Here
-            </div>
-            <div id="floating-panel">
-                <input id="address1" type="textbox" value="San Francisco, CA"/>
-                <input id="submit" type="button" value="Geocode"/>
-                <div id="map"></div>
-            </div>
-    </aside>
+    <section>
+        <div id="our-mission">
+            Our mission as web developers is to make it easier for those in need to obtain the resources they need.
+            In our effort to achieve that goal, we scrub websites to show you what food is available near you,
+            as well as provide a space for people to donate their excess food.
+        </div>
+    </section>
     <footer class="page-footer">&copy; Ana Medrano, Stephon Autery, and Dan Fellows 2020</footer>
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
 
@@ -63,14 +53,6 @@
     <!-- <script src="parsley.min.js"></script> -->
     <script src="./js/script.js"></script>
     <script src="./js/script.js"></script>
-<!-- Added scripts for Google Maps -->
-    <script src="./js/address-data.js"></script>
-  <script src="./js/google-geocoding.js"></script>
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL02cgmPwm-pJ55En3aRvxczdN4hzc05g&callback=initMap"
-    ></script>
 </body>
 
 </html>
