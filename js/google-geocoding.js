@@ -10,16 +10,11 @@ function initMap() {
   });
 }
 
-function getAddress() {
-
-}
-getAddress();
-
 function geocodeAddress(geocoder, resultsMap) {
   // var address = document.getElementById('address').value;
   for (let i = 0; i < foodAddresses.length; i++) {
-    console.log(foodAddresses[i].address);
     address = foodAddresses[i].address
+
     geocoder.geocode({ 'address': address }, function (results, status) {
       if (status === 'OK') {
         resultsMap.setCenter(results[0].geometry.location);
