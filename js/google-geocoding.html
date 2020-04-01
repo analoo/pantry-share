@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding Service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+<link rel="stylesheet" href="./css/google-styles.css">
+  </head>
+
+  <body>
+    <div id="floating-panel">
+      <input id="address1" type="textbox" value="San Francisco, CA"/>
+      <input id="submit" type="button" value="Geocode"/>
+    </div>
+    <div id="map"></div>
+
+  </body>
+
+  <script src="./js/address-data.js"></script>
+  <script src="./js/google-geocoding.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL02cgmPwm-pJ55En3aRvxczdN4hzc05g&callback=initMap"
+    ></script>
+  </body>
+</html>
