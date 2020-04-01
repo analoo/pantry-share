@@ -3,6 +3,12 @@ html {
     color: white;
 }
 
+body {
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear: both;
+}
+
 h1 {
     text-align: center;
     background-color: #4F7942;
