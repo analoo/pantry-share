@@ -33,14 +33,14 @@ function displayFoodPantries() {
     $("#food-options").append(div);
 
     for (let i = 0; i < objID.length; i++) {
-      if (californiaData[objID[i]].zipcode === userzip) {
+      if (californiaData[objID[i]].zipcode === userzip && californiaData[objID[i]].claimed === false) {
         $(div).append("<button class='dibs' data=" + objID[i] + ">Dibs</button>")
         $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
       }
 
-      else if (userzip === "") {
+      else if (userzip === "" && californiaData[objID[i]].claimed === false) {
         $(div).append("<button class='dibs' data=" + objID[i] + ">Dibs</button>")
         $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
@@ -120,3 +120,15 @@ database.ref("resources").on("value", function (snapshot) {
   displayFoodPantries();
 })
 
+
+$(document).on("click", ".dibs", function (event) {
+  event.preventDefault();
+  var dataKey = $(this).attr("data");
+  var claimedRef = database.ref("resources/food/CA/" + dataKey);
+  
+  claimedRef.update({
+    "claimed": "true"
+  });
+  displayFoodPantries();
+
+})
