@@ -4,16 +4,17 @@ function initMap() {
     center: { lat: 37.774929, lng: -122.419418 }
   });
   var geocoder = new google.maps.Geocoder();
-
   document.getElementById('submit').addEventListener('click', function () {
     geocodeAddress(geocoder, map);
   });
 }
+var geocoder = new google.maps.Geocoder();
 
 function geocodeAddress(geocoder, resultsMap) {
+  
   // var address = document.getElementById('address').value;
-  for (let i = 0; i < foodAddresses.length; i++) {
-    address = foodAddresses[i].address
+  for (let i = 0; i < foodpantries.length; i++) {
+    address = foodpantries[i].address
 
     geocoder.geocode({ 'address': address }, function (results, status) {
       if (status === 'OK') {
