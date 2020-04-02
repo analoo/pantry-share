@@ -11,13 +11,28 @@
     <div id="floating-panel">
       <input id="address1" type="textbox" value="San Francisco, CA"/>
       <input id="submit" type="button" value="Geocode"/>
+      <div id="map"></div>
     </div>
-    <div id="map"></div>
+    
 
   </body>
 
-  <script src="./js/address-data.js"></script>
+
+
+  
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+    <!-- Specific Firebase products we want (Database) -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="./js/foodpantries.js"></script>
   <script src="./js/google-geocoding.js"></script>
+  <script src="./js/script.js"></script>
     <script
       async
       defer

@@ -16,4 +16,3 @@
       // The marker, positioned at Uluru
       var marker = new google.maps.Marker({ position: sanFrancisco, map: map });
     }
-// 
