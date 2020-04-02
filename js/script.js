@@ -68,7 +68,6 @@ $("#search-button").on("click", function (event) {
   event.preventDefault();
   userzip = $("#zipcode").val().trim();
   displayFoodPantries();
-
 })
 
 
