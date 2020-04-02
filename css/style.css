@@ -36,8 +36,11 @@ h1 {
     background-color: rgb(173, 201, 165);
 }
 
+#search-options {
+    margin: 20px;
+}
+
 #food-search {
-    margin: auto;
     width: 40%;
 }
 
