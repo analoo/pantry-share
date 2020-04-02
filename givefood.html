@@ -42,9 +42,39 @@
             <!-- Filter by Zip Code button and render of list of stuff for now-->
             Give Food Here
         </div>
-    </section>
+        <nav class="uk-navbar-container" id="uk-navbar">
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active" id="home"><a href="index.html">Home</a></li>
+                    <li class="uk-active" id="find-food"><a href="findfood.html">Find Food</a></li>
+                    <li class="uk-active" id="give-food"><a href="givefood.html">Give Food</a></li>
+                    <li class="uk-active" id="about-us"><a href="aboutus.html">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+        <hr>
+        <section class="">
+            <div id="post-food">
+                <form>
+                    <input class="uk-input" id="food-address" placeholder="Address"></input>
+                    <input class="uk-input" id="food-city" placeholder="City"></input>
+                    <input class="uk-input" id="food-zip" placeholder="Zip Code"></input>
+                    <input class="uk-input" id="food-desc" placeholder="Description"></input>
+                    <select class="uk-select">
+                        <option id="persh">Perishable</option>
+                        <option id="non-persh">Non-perishable</option>
+                    </select>
+                    <input type="submit" id="post-food-button" />
+                </form>
+            </div>
+            <div id="give-places">
+                <!-- Filter by Zip Code button and render of list of stuff for now-->
+                Give Food Here
+            </div>
+        </section>
+    </div>
     <footer class="page-footer">&copy; Ana Medrano, Stephon Autery, and Dan Fellows 2020</footer>
-   
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
 

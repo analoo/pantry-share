@@ -10,41 +10,55 @@
 //=====Find food tab==============
 
 var userzip = "";
-var userSubmissions = [];
 
 function displayFoodPantries() {
   $("#food-options").empty();
   var header = $("<h3>Find Food Here</h3>");
   $("#food-options").append(header);
 
-  for (let i = 0; i < foodpantries.length; i++) {
-    var div = $("<div class='pantry'>Organization: </div>")
+  for (let i = 0; i < foodAddresses.length; i++) {
     var div = $("<div class='pantry'></div>")
     $("#food-options").append(div);
-    $(div).append("<p>" + foodpantries[i].name + "</p>")
-    $(div).append("<p>" + foodpantries[i].address + "</p>")
-    $(div).append("<p>" + foodpantries[i].hours + "</p>")
+    $(div).append("<p>" + foodAddresses[i].name + "</p>")
+    $(div).append("<p>" + foodAddresses[i].address + "</p>")
+    $(div).append("<p>" + foodAddresses[i].hours + "</p>")
   }
 
-  var californiaData = userSubmissions.food.CA;
+  var californiaData = values.food.CA;
   if (californiaData) {
     var objID = Object.keys(californiaData);
     var div = $("<div class='user'>User Submissions: </div>");
     $("#food-options").append(div);
 
     for (let i = 0; i < objID.length; i++) {
-      if (californiaData[objID[i]].zipcode === userzip) {
+      if (californiaData[objID[i]].zipcode === userzip && californiaData[objID[i]].claimed === false) {
         $(div).append("<button class='dibs' data=" + objID[i] + ">Dibs</button>")
         $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
+
+        var user = {
+          "name": californiaData[objID[i]].name,
+          "description": californiaData[objID[i]].description,
+          "zipcode": californiaData[objID[i]].zipcode
+        }
+
+        userSubmissions.push(user)
       }
 
-      else if (userzip === "") {
+      else if (userzip === "" && californiaData[objID[i]].claimed === false) {
         $(div).append("<button class='dibs' data=" + objID[i] + ">Dibs</button>")
         $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
+
+        var user = {
+          "name": californiaData[objID[i]].name,
+          "description": californiaData[objID[i]].description,
+          "zipcode": californiaData[objID[i]].zipcode
+        }
+        
+        userSubmissions.push(user)
       }
     }
   }
@@ -94,7 +108,6 @@ $("#post-food-button").on("click", function (event) {
   // date stamp time
   hours = "not applicable";
   writeUserData(name, state, address, zipcode, description, claimed, hours);
-  // hides form once user has submitted it
   $("form").css("display", "none")
 
 });
@@ -114,8 +127,21 @@ function writeUserData(name, state, address, zipcode, description, claimed, hour
   );
 }
 
+var values;
 database.ref("resources").on("value", function (snapshot) {
-  userSubmissions = snapshot.val();
+  values = snapshot.val();
   displayFoodPantries();
 })
 
+
+$(document).on("click", ".dibs", function (event) {
+  event.preventDefault();
+  var dataKey = $(this).attr("data");
+  var claimedRef = database.ref("resources/food/CA/" + dataKey);
+
+  claimedRef.update({
+    "claimed": "true"
+  });
+  displayFoodPantries();
+
+})
