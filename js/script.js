@@ -27,12 +27,12 @@ function displayFoodPantries() {
   var californiaData = values.food.CA;
   if (californiaData) {
     var objID = Object.keys(californiaData);
-    var div = $("<div class='user'>User Submissions: </div>");
-    $("#food-options").append(div);
 
     for (let i = 0; i < objID.length; i++) {
-      if (californiaData[objID[i]].zipcode === userzip && californiaData[objID[i]].claimed === false) {
-        $(div).append("<button class='dibs' data=" + objID[i] + ">Dibs</button>")
+      if (californiaData[objID[i]].zipcode === userzip) {
+        var div = $("<div class='user'></div>");
+        $("#food-options").append(div);
+        $(div).append("<button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>")
         $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
@@ -46,8 +46,10 @@ function displayFoodPantries() {
         userSubmissions.push(user)
       }
 
-      else if (userzip === "" && californiaData[objID[i]].claimed === false) {
-        $(div).append("<button class='dibs' data=" + objID[i] + ">Dibs</button>")
+      else if (userzip === "") {
+        var div = $("<div class='user'></div>");
+        $("#food-options").append(div);
+        $(div).append("<button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>")
         $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
         $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
