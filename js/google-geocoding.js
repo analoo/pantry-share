@@ -2,7 +2,7 @@ function initMap() {
   console.log("you made it");
 // set initial orientation and magnification of map
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
+    zoom: 11,
   });
 
   // put the geocoder function into memory
