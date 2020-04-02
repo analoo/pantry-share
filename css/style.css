@@ -16,17 +16,25 @@ body {
 }
 
 .uk-button-default {
-    color: white;
+    color: #3D550C;
 }
 
 td {
     border: solid #3D550C;
     border-spacing: 5px 1rem;
+    width: 100%;
+    background-color: white;
+    color: #3D550C;
+    padding: 15px;
 }
 
 .user {
     border: solid #3D550C;
     border-spacing: 5px 1rem;
+    padding-bottom: 0;
+    height: 100%;
+    clear: both;
+    width: 100%;
 }
 
 h1 {
