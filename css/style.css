@@ -3,6 +3,12 @@ html {
     color: white;
 }
 
+.container {
+    max-width: 1480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 body {
     min-height: 400px;
     margin-bottom: 100px;
@@ -34,7 +40,7 @@ h1 {
     padding: 20px;
 }
 
-#picture{
+#picture {
     float: left;
     width: 45%;
     height: auto;
