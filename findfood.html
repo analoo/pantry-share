@@ -1,65 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pantry Share</title>
     <link rel="stylesheet" href="./css/google-styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <div>
-      <h1 class="uk-heading-large">
-        <img src="assets/pantry-share-large.png" />
-      </h1>
+        <h1 class="uk-heading-large">
+            <img src="assets/pantry-share-large.png" />
+        </h1>
     </div>
     <nav class="uk-navbar-container" id="uk-navbar">
-      <div class="uk-navbar-left">
-        <ul class="uk-navbar-nav">
-          <li class="uk-active" id="home"><a href="index.html">Home</a></li>
-          <li class="uk-active" id="find-food">
-            <a href="findfood.html">Find Food</a>
-          </li>
-          <li class="uk-active" id="give-food">
-            <a href="givefood.html">Give Food</a>
-          </li>
-          <li class="uk-active" id="about-us">
-            <a href="aboutus.html">About Us</a>
-          </li>
-        </ul>
-      </div>
+        <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active" id="home"><a href="index.html">Home</a></li>
+                <li class="uk-active" id="find-food">
+                    <a href="findfood.html">Find Food</a>
+                </li>
+                <li class="uk-active" id="give-food">
+                    <a href="givefood.html">Give Food</a>
+                </li>
+                <li class="uk-active" id="about-us">
+                    <a href="aboutus.html">About Us</a>
+                </li>
+            </ul>
+        </div>
     </nav>
     <hr />
     <aside>
-      <div id="search-options">
-        <p>Filter results by Zipcode:</p>
+        <div id="search-options">
+            <p>Filter results by Zipcode:</p>
 
-        <form id="food-search">
-          <div id="food-filters">
-            <input type="text" id="zipcode" placeholder="" />
-            <input type="submit" id="search-button" />
-          </div>
-        </form>
-      </div>
+            <form id="food-search">
+                <div id="food-filters">
+                    <input type="text" id="zipcode" placeholder="" />
+                    <input type="submit" id="search-button" />
+                </div>
+            </form>
+        </div>
 
-      <div id="food-options">
-        Find Food Here
-      </div>
+        <div id="food-options">
+            Find Food Here
+        </div>
 
-      <div id="floating-panel">
-        <div id="map"></div> 
-      </div>
+        <div id="floating-panel">
+            <div id="map"></div>
+        </div>
     </aside>
-
     <footer class="page-footer">
-      &copy; Ana Medrano, Stephon Autery, and Dan Fellows 2020
+        &copy; Ana Medrano, Stephon Autery, and Dan Fellows 2020
     </footer>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -77,12 +74,10 @@
     <script src="./js/foodpantries.js"></script>
     <script src="./js/script.js"></script>
 
-    <!-- Added scripts for Google Maps -->  
+    <!-- Added scripts for Google Maps -->
 
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL02cgmPwm-pJ55En3aRvxczdN4hzc05g&callback=initMap"
-    ></script>
-  </body>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL02cgmPwm-pJ55En3aRvxczdN4hzc05g&callback=initMap"></script>
+</body>
+
 </html>
