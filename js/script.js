@@ -17,51 +17,61 @@ function displayFoodPantries() {
   $("#food-options").append(header);
 
   for (let i = 0; i < foodAddresses.length; i++) {
-    var div = $("<div class='pantry'></div>")
-    $("#food-options").append(div);
-    $(div).append("<p>" + foodAddresses[i].name + "</p>")
-    $(div).append("<p>" + foodAddresses[i].address + "</p>")
-    $(div).append("<p>" + foodAddresses[i].hours + "</p>")
+    if (foodAddresses[i].zipcode === userzip) {
+      var div = $("<div class='pantry'></div>")
+      $("#food-options").append(div);
+      $(div).append("<p>" + foodAddresses[i].name + "</p>")
+      $(div).append("<p>" + foodAddresses[i].address + "</p>")
+      $(div).append("<p>" + foodAddresses[i].hours + "</p>")
+    }
+    else if (userzip === "") {
+      var div = $("<div class='pantry'></div>")
+      $("#food-options").append(div);
+      $(div).append("<p>" + foodAddresses[i].name + "</p>")
+      $(div).append("<p>" + foodAddresses[i].address + "</p>")
+      $(div).append("<p>" + foodAddresses[i].hours + "</p>")
+    }
   }
 
-  var californiaData = values.food.CA;
-  if (californiaData) {
-    var objID = Object.keys(californiaData);
+}
 
-    for (let i = 0; i < objID.length; i++) {
-      if (californiaData[objID[i]].zipcode === userzip) {
-        var div = $("<div class='user'></div>");
-        $("#food-options").append(div);
-        $(div).append("<button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>")
-        $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
-        $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
-        $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
+var californiaData = values.food.CA;
+if (californiaData) {
+  var objID = Object.keys(californiaData);
 
-        var user = {
-          "name": californiaData[objID[i]].name,
-          "description": californiaData[objID[i]].description,
-          "zipcode": californiaData[objID[i]].zipcode
-        }
+  for (let i = 0; i < objID.length; i++) {
+    if (californiaData[objID[i]].zipcode === userzip && californiaData[objID[i]].claimed === false) {
+      var div = $("<div class='user'></div>");
+      $("#food-options").append(div);
+      $(div).append("<button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>")
+      $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
+      $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
+      $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
 
-        userSubmissions.push(user)
+      var user = {
+        "name": californiaData[objID[i]].name,
+        "description": californiaData[objID[i]].description,
+        "zipcode": californiaData[objID[i]].zipcode
       }
 
-      else if (userzip === "") {
-        var div = $("<div class='user'></div>");
-        $("#food-options").append(div);
-        $(div).append("<button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>")
-        $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
-        $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
-        $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
+      userSubmissions.push(user)
+    }
 
-        var user = {
-          "name": californiaData[objID[i]].name,
-          "description": californiaData[objID[i]].description,
-          "zipcode": californiaData[objID[i]].zipcode
-        }
-        
-        userSubmissions.push(user)
+    else if (userzip === "" && californiaData[objID[i]].claimed === false) {
+      var div = $("<div class='user'></div>");
+      $("#food-options").append(div);
+      $(div).append("<button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>")
+      $(div).append("<p>" + californiaData[objID[i]].name + "</p>")
+      $(div).append("<p>" + californiaData[objID[i]].description + "</p>")
+      $(div).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
+
+      var user = {
+        "name": californiaData[objID[i]].name,
+        "description": californiaData[objID[i]].description,
+        "zipcode": californiaData[objID[i]].zipcode
       }
+
+      userSubmissions.push(user)
     }
   }
 }
@@ -100,8 +110,11 @@ var hours = "";
 
 $("#post-food-button").on("click", function (event) {
   event.preventDefault();
-  name = "user-generated";
-  address = "not applicable";
+  name = $("#food-address").val().trim();
+  if (name === "") {
+    name = "anonymous neighbor";
+  }
+  address = $("#food-address").val().trim();
   zipcode = $("#food-zip").val().trim();
   description = $("#food-desc").val().trim();
   claimed = false;

@@ -15,33 +15,6 @@
     <div>
         <h1 class="uk-heading-large"><img src="assets/pantry-share-large.png"></h1>
     </div>
-    <nav class="uk-navbar-container" id="uk-navbar">
-        <div class="uk-navbar-left">
-            <ul class="uk-navbar-nav">
-                <li class="uk-active" id="home"><a href="index.html">Home</a></li>
-                <li class="uk-active" id="find-food"><a href="findfood.html">Find Food</a></li>
-                <li class="uk-active" id="give-food"><a href="givefood.html">Give Food</a></li>
-                <li class="uk-active" id="about-us"><a href="aboutus.html">About Us</a></li>
-            </ul>
-        </div>
-    </nav>
-    <hr>
-    <section>
-        <div id="post-food">
-            <form>
-                <input class="uk-input" id="food-zip" placeholder="Zip Code"></input>
-                <input class="uk-input" id="food-desc" placeholder="Description"></input>
-                <select class="uk-select">
-                    <option id="persh">Perishable</option>
-                    <option id="non-persh">Non-perishable</option>
-                </select>
-                <input type="submit" id="post-food-button" />
-            </form>
-        </div>
-        <div id="give-places">
-            <!-- Filter by Zip Code button and render of list of stuff for now-->
-            Give Food Here
-        </div>
         <nav class="uk-navbar-container" id="uk-navbar">
             <div class="uk-navbar-left">
                 <ul class="uk-navbar-nav">
@@ -56,6 +29,7 @@
         <section class="">
             <div id="post-food">
                 <form>
+                    <input class="uk-input" id="food-name" placeholder="e.g. Jane"></input>
                     <input class="uk-input" id="food-address" placeholder="Address"></input>
                     <input class="uk-input" id="food-city" placeholder="City"></input>
                     <input class="uk-input" id="food-zip" placeholder="Zip Code"></input>
