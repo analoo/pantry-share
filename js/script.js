@@ -1,99 +1,23 @@
-// Stephon place for code
-
-
-
-
-// ======================================
-
-// Your web app's Firebase configuration
-
-//=====Find food tab==============
-
 var userzip = "";
-
-function displayFoodPantries() {
-  $("#food-options").empty();
-  var table = $("<table>Find Food Here</table>");
-  $("#food-options").append(table);
-  var tableHeader = $("<tr><th>Food Pantries</th></tr>");
-  $(table).append(tableHeader);
-
-  for (let i = 0; i < foodpantries.length; i++) {
-    if (foodpantries[i].zipcode === userzip) {
-      var trow = $("<tr class='pantry'></tr>")
-      var div = $("<td></td>")
-      $(table).append(trow);
-      $(trow).append(div);
-      $(div).append("<p>" + foodpantries[i].name + "</p>")
-      $(div).append("<p>" + foodpantries[i].address + "</p>")
-      $(div).append("<p>" + foodpantries[i].hours + "</p>")
-    }
-    else if (userzip === "") {
-      var trow = $("<tr class='pantry'></tr>")
-      var div = $("<td></td>")
-      $(table).append(trow);
-      $(trow).append(div);
-      $(div).append("<p>" + foodpantries[i].name + "</p>")
-      $(div).append("<p>" + foodpantries[i].address + "</p>")
-      $(div).append("<p>" + foodpantries[i].hours + "</p>")
-    }
-  }
-
-  var californiaData = values.food.CA;
-  if (californiaData) {
-    var objID = Object.keys(californiaData);
-    var table2 = $("<table></table>");
-    $("#food-options").append(table2);
-    var tableHeader2 = $("<tr><th>User Generated</th></tr>");
-    $(table2).append(tableHeader2);
-
-    for (let i = 0; i < objID.length; i++) {
-      if (californiaData[objID[i]].zipcode === userzip && californiaData[objID[i]].claimed === false) {
-        var trow2 = $("<tr class='users'></tr>")
-        var div2 = $("<td></td>")
-        $(table2).append(trow2);
-        $(trow2).append(div2);
-        $(div2).append("<button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>")
-        $(div2).append("<p>" + californiaData[objID[i]].name + "</p>")
-        $(div2).append("<p>" + californiaData[objID[i]].description + "</p>")
-        $(div2).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
-
-        var user = {
-          "name": californiaData[objID[i]].name,
-          "description": californiaData[objID[i]].description,
-          "zipcode": californiaData[objID[i]].zipcode
-        }
-
-        userSubmissions.push(user)
-      }
-
-      else if (userzip === "" && californiaData[objID[i]].claimed === false) {
-        var trow2 = $("<tr class='users'></tr>")
-        var div2 = $("<td></td>")
-        $(table2).append(trow2);
-        $(trow2).append(div2);
-        $(div2).append("<button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>")
-        $(div2).append("<p>" + californiaData[objID[i]].name + "</p>")
-        $(div2).append("<p>" + californiaData[objID[i]].description + "</p>")
-        $(div2).append("<p>" + californiaData[objID[i]].zipcode + "</p>")
-
-        var user = {
-          "name": californiaData[objID[i]].name,
-          "description": californiaData[objID[i]].description,
-          "zipcode": californiaData[objID[i]].zipcode
-        }
-
-        userSubmissions.push(user)
-      }
-    }
-  }
-}
 
 $("#search-button").on("click", function (event) {
   event.preventDefault();
   userzip = $("#zipcode").val().trim();
   displayFoodPantries();
 })
+
+function checkZipcodeNum(str) {
+  var allInts = true;
+  var array = str.split("");
+  var nums = "1234567890"
+  for (let i = 0; i < array.length; i++) {
+    if (nums.indexOf(array[i]) == -1) {
+      allInts = false;
+    }
+
+  }
+  return allInts
+}
 
 
 // ======= firebase configuration ==========
@@ -123,20 +47,27 @@ var hours = "";
 
 $("#post-food-button").on("click", function (event) {
   event.preventDefault();
-  name = $("#food-address").val().trim();
+  zipcode = $("#food-zip").val().trim();
+  name = $("#food-name").val().trim();
   if (name === "") {
     name = "anonymous neighbor";
   }
   address = $("#food-address").val().trim();
-  zipcode = $("#food-zip").val().trim();
   description = $("#food-desc").val().trim();
   claimed = false;
   state = "CA";
-
   // date stamp time
   hours = "not applicable";
-  writeUserData(name, state, address, zipcode, description, claimed, hours);
-  $("form").css("display", "none")
+
+  if (checkZipcodeNum(zipcode) == false || zipcode.length != 5) {
+    $("#zip-warning").text("zipcode is invalid. please update and resubmit form");
+  }
+
+  else {
+    $("#warning").empty()
+    writeUserData(name, state, address, zipcode, description, claimed, hours);
+    $("form").css("display", "none")
+  }
 
 });
 
@@ -161,15 +92,81 @@ database.ref("resources").on("value", function (snapshot) {
   displayFoodPantries();
 })
 
+function displayFoodPantries() {
+  $("#food-options").empty();
+
+  // pull firebase stored data regardless
+  var californiaData = values.food.CA;
+  if (californiaData) {
+    var objID = Object.keys(californiaData);
+  }
+
+
+  // Creates a table to display results
+  var table = $("<table>Find Food Here</table>");
+  $("#food-options").append(table);
+
+  // creating two columns, one for an icon and another for information
+  var tableHeader = $("<tr><th>key</th><th>info</th></tr>");
+  $(table).append(tableHeader);
+
+  for (let i = 0; i < foodpantries.length; i++) {
+    var pantry = foodpantries[i];
+    if (userzip === "" || userzip === pantry.zipcode) {
+      var trow = $("<tr class='pantry'></tr>")
+      $(table).append(trow);
+      $(trow).append("<img src='assets/foodbank.png'/>");
+      var div = $("<td></td>")
+      $(trow).append(div);
+      $(div).append("<p>" + pantry.name + "</p>")
+      $(div).append("<p>" + pantry.address + "</p>")
+      $(div).append("<p>" + pantry.status + "</p>")
+      $(div).append("<p>" + pantry.hours + "</p>")
+    }
+  }
+  for (let i = 0; i < objID.length; i++) {
+    var userEntry = californiaData[objID[i]];
+    if (userEntry.claimed === false) {
+      if (userzip === "" || userzip === pantry.zipcode) {
+        var trow2 = $("<tr class='users'></tr>")
+        $(table).append(trow2);
+        $(trow2).append("<img src='assets/posting_user.png'/></br><button class='uk-button uk-button-default dibs' data=" + objID[i] + ">Dibs</button>");
+        var div = $("<td></td>")
+        $(trow2).append(div);
+        $(div).append("<p>" + userEntry.name + "</p>")
+        $(div).append("<p>" + userEntry.address + "</p>")
+        $(div).append("<p>" + userEntry.description + "</p>")
+        $(div).append("<p>" + userEntry.zipcode + "</p>")
+
+
+        var user = {
+          "name": userEntry.name,
+          "description": userEntry.description,
+          "zipcode": userEntry.zipcode,
+          "address": userEntry.address
+        }
+        userSubmissions.push(user)
+      }
+    }
+
+  }
+
+}
 
 $(document).on("click", ".dibs", function (event) {
   event.preventDefault();
   var dataKey = $(this).attr("data");
-  var claimedRef = database.ref("resources/food/CA/" + dataKey);
+  var record = "resources/food/CA/" + dataKey
+  var claimedRef = database.ref(record);
 
+ 
   claimedRef.update({
-    "claimed": "true"
+    "claimed": true
   });
-  displayFoodPantries();
+
+
+
 
 })
+
+
