@@ -19,6 +19,11 @@ body {
     color: #3D550C;
 }
 
+.dibs {
+    background-color: white;
+    
+}
+
 td {
     border: solid #3D550C;
     border-spacing: 5px 1rem;
