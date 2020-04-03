@@ -86,3 +86,6 @@ var foodpantries = [
         zipCodeServed: ""
     }
 ]
+
+
+var  userSubmissions = [];
