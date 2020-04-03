@@ -156,12 +156,16 @@ function displayFoodPantries() {
 $(document).on("click", ".dibs", function (event) {
   event.preventDefault();
   var dataKey = $(this).attr("data");
-  var claimedRef = database.ref("resources/food/CA/" + dataKey);
-  console.log("resources/food/CA/" + dataKey)
+  var record = "resources/food/CA/" + dataKey
+  var claimedRef = database.ref(record);
 
+ 
   claimedRef.update({
     "claimed": true
   });
+
+
+
 
 })
 
