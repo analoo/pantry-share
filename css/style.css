@@ -105,3 +105,8 @@ h1 {
     clear: both;
 }
 
+.warning{
+    color: red;
+    background-color: white;
+    text-align: center;
+}
